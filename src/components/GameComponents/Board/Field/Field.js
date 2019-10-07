@@ -1,6 +1,8 @@
 import React from 'react';
 
 import classes from './Field.module.css';
+import xImage from './x.png';
+import oImage from './o.png';
 
 const Field = (props) => {
 
@@ -16,10 +18,10 @@ const Field = (props) => {
 
 	if(props.status === 'x') {
 		classlist.push(classes.x);
-		displayChar = <img src='img/x.png' />;
+		displayChar = <img src={xImage} />;
 	} else if(props.status === 'o') {
 		classlist.push(classes.o);
-		displayChar = <img src='img/o.png' />;
+		displayChar = <img src={oImage} />;
 	} else if(props.enabled) {
 		classlist.push(classes.empty);
 		onClick = props.onClick;
