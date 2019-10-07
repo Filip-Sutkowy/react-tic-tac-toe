@@ -6,7 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const app = (
-	<BrowserRouter basename="/tic-tac-toe/">
+	<BrowserRouter basename="/react-tic-tac-toe/">
 		<App />
 	</BrowserRouter>
 )
