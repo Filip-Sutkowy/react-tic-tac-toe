@@ -1,0 +1,21 @@
+.Board {
+	width: 400px;
+	height: 400px;
+	max-width: 100%;
+	background-color: black;
+	margin: 20px auto;
+}
+
+@media (min-width: 500px) {
+	.Board{
+		width: 500px;
+		height: 500px;
+	}
+}
+
+@media (min-width: 720px) {
+	.Board{
+		width: 720px;
+		height: 720px;
+	}
+}

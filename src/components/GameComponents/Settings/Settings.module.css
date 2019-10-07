@@ -1,0 +1,77 @@
+.Settings {
+	width: 100%;
+	min-height: 100px;
+}
+
+.item {
+	width: 40%;
+	min-height: 80px;
+	margin: 10px 5%;
+	display: inline-block;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 50px;
+	color: white;
+	background-color: #3e4c34;
+	border: none;
+	padding: 0;
+}
+
+.input {
+	width: 50%;
+	height: 80px;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 0;
+	background-color: #414141;
+	font-size: 25px;
+	color: white;
+	border: none;
+	text-align: center;
+}
+
+.inputButton {
+	width: 25%;
+	height: 80px;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 0;
+	background-color: #414141;
+	font-size: 25px;
+	color: white;
+	border: none;
+}
+
+.inputButton:hover {
+	background-color: #515151;
+	cursor: pointer;
+}
+.inputButton:focus {
+	outline: none; 
+}
+
+/* For Firefox */
+
+input[type='number'].input {
+	-moz-appearance:textfield;
+}
+
+
+
+/* Webkit browsers like Safari and Chrome */
+
+input[type=number].input::-webkit-inner-spin-button,
+input[type=number].input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+
+@media (max-width: 750px) {
+	.Settings {
+		min-height: 200px;
+	}
+	.item {
+		width: 90%;
+	}
+}

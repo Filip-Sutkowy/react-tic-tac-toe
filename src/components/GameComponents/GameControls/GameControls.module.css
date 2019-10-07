@@ -1,0 +1,36 @@
+.GameControls {
+	width: 100%;
+	min-height: 100px;
+}
+
+.item {
+	width: 40%;
+	min-height: 80px;
+	margin: 10px 5%;
+	display: inline-block;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 50px;
+	color: white;
+	background-color: inherit;
+	border: none;
+}
+
+.Button {
+	background-color: #3e4c34;
+}
+
+.Button:hover {
+	cursor: pointer;
+}
+
+
+@media (max-width: 750px) {
+	.GameControls {
+		min-height: 200px;
+	}
+	.item {
+		width: 90%;
+	}
+}

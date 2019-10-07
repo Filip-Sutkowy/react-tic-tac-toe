@@ -1,0 +1,32 @@
+.Home {
+  min-height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Home a {
+	color: #de730f;
+	text-decoration: none;
+}
+
+a.PlayLink {
+	min-height: 75px;
+	background-color: #3e4c34;
+	text-align: center;
+	width: 400px;
+	font-size: 45px;
+	line-height: 75px;
+	margin: 20px auto;
+	color: white;
+	text-decoration: none;
+	transition: 0.2s all ease;
+	max-width: 100%;
+}
+
+.PlayLink:hover {
+	background-color: #4f5d45;
+}
