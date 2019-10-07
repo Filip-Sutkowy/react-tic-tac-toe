@@ -19,7 +19,7 @@ export class Home extends React.Component {
 				<Link
 					className={classes.PlayLink}
 					to='/game'>Let's Play!</Link>
-        <a href="https://github.org"
+        <a href="https://github.com/Filip-Sutkowy/react-tic-tac-toe"
           target="_blank"
           rel="noopener noreferrer"
         >
