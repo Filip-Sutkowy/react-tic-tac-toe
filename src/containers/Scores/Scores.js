@@ -1,38 +1,55 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import * as UI from '../../components/UI/index';
 import classes from './Scores.module.css';
+import * as actions from '../../store/actions/index';
 
-export class Scores extends React.Component {
+class Scores extends React.Component {
 
-	//dummy values, will be fixed
-
-	state = {
-		scores : {
-			x3 : [
-				512, 1739, 1832, 2521 
-			]
-		}
+	componentDidMount() {
+		this.props.fetchScores();
 	}
+
 	render() {
+
+		let boards = <UI.Spinner />;
+
+		if( !this.props.loading ) {
+			boards = Object.keys(this.props.scores).map(key => {
+				const times = this.props.scores[key].sort();
+				const board = (
+					<div key={key} className={classes.Board}>
+						<h4>Board {key}</h4>
+						<ol>
+							{times.map(time => <li key={key+time}>{Number(time).toFixed(2)}s</li>)}
+						</ol>
+					</div>);
+				return board;
+			});
+		}
 
 		return (
       <div className={classes.Scores}>
 			<h1>Best Times:</h1>
-			<div className={classes.Board}>
-				<h4>Board 3x3</h4>
-				<ol>
-					{this.state.scores.x3.map(score => <li>{score/1000}s</li>)}
-				</ol>
-			</div>
-			<div className={classes.Board}>
-				<h4>Board 4x4</h4>
-				<ol>
-					{this.state.scores.x3.map(score => <li>{score/1000}s</li>)}
-				</ol>
-			</div>
+			{boards}
       </div>
 		);
 	};
 };
 
-export default Scores;
+const mapStateToProps = state => {
+  return {
+		scores: state.scores.scores,
+		loading: state.scores.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		fetchScores: () => dispatch(actions.fetchScores()),
+		postScore: (board, time) => dispatch(actions.postScore(board, time))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scores);

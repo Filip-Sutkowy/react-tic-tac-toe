@@ -1,3 +1,6 @@
+import Scores from './Scores/Scores';
+import Game from './Game/Game';
+
 export { Home } from './Home/Home';
-export { Game } from './Game/Game';
-export { Scores } from './Scores/Scores';
+export { Game };
+export { Scores };

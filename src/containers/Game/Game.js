@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Settings from '../../components/GameComponents/Settings/Settings';
 import Board from '../../components/GameComponents/Board/Board';
 import GameControls from '../../components/GameComponents/GameControls/GameControls';
 import * as UI from '../../components/UI/index';
+import * as actions from '../../store/actions/index';
 
 export class Game extends React.Component {
 
@@ -20,7 +22,7 @@ export class Game extends React.Component {
 
 	initState = {};
 
-	componentWillMount() {
+	componentDidMount() {
 		this.createBoard(3);
 		this.initState = {...this.state};
 	}
@@ -161,6 +163,12 @@ export class Game extends React.Component {
 		this.createBoard(this.state.boardSize);
 	}
 
+	postScoreHandler = () => {
+		const board = this.state.boardSize+"x"+this.state.boardSize;
+		this.props.postScore(board, this.state.lastPlayTime);
+		this.setState({showWinner: false});
+	}
+
 	render() {
 
 		let controls = (
@@ -176,18 +184,40 @@ export class Game extends React.Component {
 			controls = <GameControls player={this.state.player} abortGame={this.abortGameHandler} />;
 		}
 
+		let modalContent = (
+			<div style={{textAlign: "center"}}>
+				<h1>{this.state.winner ? "Winner is: " + this.state.winner : "Tie!" }</h1>
+				<p>Playtime: {this.state.lastPlayTime/1000}s</p>
+				{this.state.winner ? <button onClick={this.postScoreHandler}>Post your score!</button> : null}
+			</div>);
+
+		if(this.props.loading) {
+			modalContent = <UI.Spinner />;
+		}
+
 
 		return (
 			<div>
 				{controls}
 				<Board enabled={this.state.isPlaying} size={this.state.boardSize} fields={this.state.boardFields} onFieldClick={this.fieldClickHandler} />
-				<UI.Modal show={this.state.showWinner} modalClosed={() => this.setState({showWinner: false})}>
-					<h1>{this.state.winner ? "Winner is: " + this.state.winner : "Tie!" }  </h1>
-					<p>Playtime: {this.state.lastPlayTime/1000}s</p>
+				<UI.Modal show={this.state.showWinner || this.props.loading} modalClosed={() => this.setState({showWinner: false})}>
+					{modalContent}
 				</UI.Modal>
 			</div>
 		);
 	}
 }
 
-export default Game;
+const mapStateToProps = state => {
+  return {
+		loading: state.scores.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		postScore: (board, time) => dispatch(actions.postScore(board, time))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

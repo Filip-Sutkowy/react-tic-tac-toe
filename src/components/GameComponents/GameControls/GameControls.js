@@ -1,7 +1,6 @@
 import React from 'react';
 
 import classes from './GameControls.module.css';
-import * as UI from '../../UI/index';
 
 const gameControls = (props) => {
 
