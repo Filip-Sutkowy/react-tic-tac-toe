@@ -18,10 +18,10 @@ const Field = (props) => {
 
 	if(props.status === 'x') {
 		classlist.push(classes.x);
-		displayChar = <img src={xImage} />;
+		displayChar = <img src={xImage} alt="x" />;
 	} else if(props.status === 'o') {
 		classlist.push(classes.o);
-		displayChar = <img src={oImage} />;
+		displayChar = <img src={oImage} alt="o" />;
 	} else if(props.enabled) {
 		classlist.push(classes.empty);
 		onClick = props.onClick;
