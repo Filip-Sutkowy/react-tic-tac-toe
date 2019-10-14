@@ -12,7 +12,7 @@ export class Home extends React.Component {
 
 		return (
       <div className={classes.Home}>
-				<Board enabled={false} size={3} fields={[null, null, 'x', 'o', 'x', null, 'x', null, 'o']} />
+				<Board enabled={false} size={3} fields={[null, null, 'x', 'o', 'x', null, 'x', null, 'o']} thumbnail />
         <p>
           Just Another Tic Tac Toe Game
         </p>

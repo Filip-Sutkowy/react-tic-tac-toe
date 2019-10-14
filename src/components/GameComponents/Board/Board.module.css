@@ -6,6 +6,11 @@
 	margin: 20px auto;
 }
 
+.Board.thumbnail {
+	width: 350px;
+	height: 350px;
+}
+
 @media (min-width: 500px) {
 	.Board{
 		width: 500px;
@@ -18,4 +23,8 @@
 		width: 720px;
 		height: 720px;
 	}
+}
+
+.thumbnail {
+
 }

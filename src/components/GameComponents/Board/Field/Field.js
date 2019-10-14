@@ -9,7 +9,7 @@ const Field = (props) => {
 	let style = {
 		width: (100/props.size)+"%",
 		height: (100/props.size)+"%",
-		borderColor: props.enabled ? "white" : "black"
+		borderColor: props.enabled || props.thumbnail ? "white" : "black"
 	}
 
 	let classlist = [classes.Field];
